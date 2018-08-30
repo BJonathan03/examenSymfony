@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="film">
+        {% for cocktail in cocktails %}
+
+            <film>
+                <h2>{{ cocktail.nom }}</h2>
+                <h5>Genre : {{ cocktail.categories.nom }}</h5>
+
+                <div class="content">
+                    <img src="{{ cocktail.imageUrl }}" alt=""/>
+                    <a href="{{ path('cocktail_show', {'id':cocktail.id}) }}" class="btn btn-primary">Plus d'infos...</a>
+                    <hr color="red"/>
+                </div>
+            </film>
+            <hr/>
+
+        {% endfor %}
+    </section>
+
+
+{% endblock %}

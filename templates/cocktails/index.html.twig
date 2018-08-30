@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <ul>
+    {% for ingredient in ingredients %}
+        <h5>Nom de l'ingrédient :</h5>
+        <ul>
+            <li> {{ ingredient.nom }}</li><br/>
+        </ul>
+        <h5>Déscription de l'ingrédient :</h5>
+        <ul>
+            <li>{{ ingredient.description }}</li><br/>
+        </ul>
+        <h5>Cocktail utilisant cet ingrédient :</h5>
+        <ul>
+            {% for cocktail in ingredient.cocktails %}
+                <li>{{cocktail.nom}}</li><br/>
+            {% endfor %}
+        </ul>
+
+    <hr color="red"/>
+
+
+    {% endfor %}
+    </ul>
+{% endblock %}

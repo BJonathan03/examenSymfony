@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <cocktail>
+        <h2>{{ cocktail.nom }}</h2>
+         <h5>Catégorie : {{ cocktail.categories.nom }}</h5>
+        <div class="metadata">
+
+            Déscription du cocktail : {{ cocktail.description }} <br/>
+            Prix : {{ cocktail.prix }}  <br/>
+            Volume : {{ cocktail.volume }} <br/>
+            Origine : {{ cocktail.origine }} <br/>
+
+            <img src="{{ cocktail.imageUrl }}" alt="" />
+
+            <div>
+                Ingrédients pour réaliser ce cocktail :
+                <ul>
+                    {% for ingredient in cocktail.ingredients %}
+                        <li>{{ ingredient.nom }} </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+        <br/>
+        <div class="modification">
+
+            <a href="{{ path('home') }}" class="btn btn-primary">Retour...</a>
+            <a href="{{ path('delete', {'id':cocktail.id}) }}" class="btn btn-primary">Supprimer</a>
+            <a href="{{ path('cocktail_edit', {'id':cocktail.id}) }}" class="btn btn-primary">Modifier</a>
+        </div>
+
+    </cocktail>
+
+{% endblock %}

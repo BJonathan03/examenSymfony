@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% form_theme formCocktail 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    {% if editMode %}
+        <h1>Modification du cocktail</h1>
+    {% else %}
+        <h1>Création d'un nouveau cocktail</h1>
+    {% endif %}
+
+    {{ form_start(formCocktail) }}
+
+    {{ form_row(formCocktail.nom, {'label' : 'Nom du cocktail : ','attr' : {'placeholder': "Quel est son petit nom ?"} }) }}
+    {{ form_row(formCocktail.description, {'label' : 'Brève déscription du cocktail : ', 'attr' : {'placeholder': "Un petit résumé"} }) }}
+    {{ form_row(formCocktail.prix, {'label' : 'Le prix conseillé : ', 'attr' : {'placeholder': "Pas trop cher"} }) }}
+    {{ form_row(formCocktail.volume, {'label' : 'Quel volume en cl ? : ', 'attr' : {'placeholder': "Volume ?"} }) }}
+    {{ form_row(formCocktail.origine, {'label' : 'De quel pays est il originaire : ', 'attr' : {'placeholder': "Origine ?"} }) }}
+    {{ form_row(formCocktail.imageUrl, {'label' : 'Une petite photo pour embelir ', 'attr' : {'placeholder': "URL de l'image"} }) }}
+    {{ form_row(formCocktail.categories, {'label' : 'Choix d\'une categorie '}) }}
+
+
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+            Enregistrer les modifications
+        {% else %}
+            Ajouter le cocktail
+        {% endif %}
+    </button>
+
+    {{ form_end(formCocktail) }}
+
+{% endblock %}
